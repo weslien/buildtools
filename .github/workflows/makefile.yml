@@ -17,8 +17,12 @@ jobs:
 
     - name: Build
       run: make build
+      env:
+        BUILDER: default
+        ARCHITECTURES: linux/amd64,linux/arm64
 
     - name: Push
       run: make push
       env:
         DOCKER_PAT: ${{ secrets.DOCKER_PAT }}
+        
