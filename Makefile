@@ -1,5 +1,6 @@
 # Override these by setting them in the environment
 ARCHITECTURES ?= linux/arm64,linux/amd64
+ARCHITECTURES ?= linux/arm64,linux/amd64
 GITHUB_ORG ?= weslien
 IMAGE_NAME ?= buildtools
 DOCKER_USERNAME ?= weslien
