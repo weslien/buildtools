@@ -28,7 +28,7 @@ jobs:
       env:
         BUILDER: ${{ steps.setup-buildx.outputs.name }}
         ARCHITECTURES: linux/amd64,linux/arm64
-        BUILD_ACTION: --load --output="type=image"
+        BUILD_ACTION: --output="type=image"
 
     - name: Push
       run: make push
