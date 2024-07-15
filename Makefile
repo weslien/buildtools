@@ -7,12 +7,13 @@ DOCKER_USERNAME ?= weslien
 DOCKER_PAT ?= 
 REV := $(shell git rev-parse --short HEAD)
 BUILDER ?= ""
+BUILD_ACTION ?= ""
 
 .PHONY: all _auth
 build: _choose_builder
 	
 	@echo "Building for $(ARCHITECTURES) using $(BUILDER)"
-	@docker buildx build --builder $(BUILDER) --platform $(ARCHITECTURES) -t "$(GITHUB_ORG)/$(IMAGE_NAME):latest"  . 
+	@docker buildx build --builder $(BUILDER) --platform $(ARCHITECTURES) $(BUILD_ACTION) -t "$(GITHUB_ORG)/$(IMAGE_NAME):latest"  . 
 	@docker tag "$(GITHUB_ORG)/$(IMAGE_NAME):latest" "$(GITHUB_ORG)/$(IMAGE_NAME):$(REV)"
 
 _choose_builder:
