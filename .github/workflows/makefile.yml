@@ -28,10 +28,11 @@ jobs:
       env:
         BUILDER: ${{ steps.setup-buildx.outputs.name }}
         ARCHITECTURES: linux/amd64,linux/arm64
-        BUILD_ACTION: --load
+        BUILD_ACTION: --load --output="type=image"
 
     - name: Push
       run: make push
       env:
         DOCKER_PAT: ${{ secrets.DOCKER_PAT }}
+        DOCKER_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
         
